@@ -1,52 +1,42 @@
 <html>
 <head>
-    <title>Документооборот</title>
+    <title>Документооборот админка</title>
 </head>
 <body>
-        Документооборот
-        <div id = "header">
-            <div id="menu">
-                <div id = "takegive" class = "btns">Выдача/Прием книг</div>
-                <div id = "tables" class = "btns">Таблицы
-                    <ul class="submenu">
-                        <li class = "tables"><div class = "btns" id = "pupil">Ученики</div></li>
-                        <li class = "tables"><div class = "btns" id = "staff">Сотрудники</div></li>
-                        <li class = "tables"><div class = "btns" id = "Sbooks">Учебники</div></li>
-                        <li class = "tables"><div class = "btns" id = "books">Книги</div></li>
-                        <li class = "tables"><div class = "btns" id = "class">Классы</div></li>
-                        <li class = "tables"><div class = "btns" id = "TakeHistory">Выдача книг</div></li>
-                    </ul>
-                </div>
-                <div class = "btns" id = "reports">Отчеты
-                    <ul class="submenu">
-                        <li class = "tables"><div class = "btns" id = "duty">плейсхолдер</div></li>
-                    </ul>
-                </div>
-                <div id = "shapbtns" style="display: none;">
-                    <button id ="addbtn">Добавить</button>
-                </div>
+    <div id="myModal" class="modal">
+        <div class = "modal-content">
+            <div>
+                <button id="addclose">Добавить</button>
+                <button id="close">Отмена</button><br>
+                <div id="modaldata"></div>
             </div>
         </div>
-        <div id = "main">
-            <div id = "maindata" style="height: 90%; overflow: auto;">
-                <div class = "data" id = "pupil" style = "display: none;">Ученики</div>
-                <div class = "data" id = "staff" style = "display: none;">Сотрудники</div>
-                <div class = "data" id = "Sbooks" style = "display: none;">Учебники</div>
-                <div class = "data" id = "books" style = "display: none;">Книги</div>
-                <div class = "data" id = "class" style = "display: none;">Классы</div>
-                <div class = "data" id = "TakeHistory" style = "display: none;">Выдача книг</div>
-                <div class = "data" id = "duty" style = "display: none;">Просроченные книги</div>
+    </div>
+    Документооборот админка
+    <div id = "header">
+        <div id="menu">
+            <div id = "tables" class = "btns">Таблицы
+                <ul class="submenu">
+                    <li class = "tables"><div class = "btns" id = "pupils">Пользователи</div></li>
+                    <li class = "tables"><div class = "btns" id = "access">Пользовательский доступ</div></li>
+                </ul>
             </div>
-            <div id = "pages" style="height: 5%; overflow: auto;">
-                <div class = "pages" id = "pupil" style = "display: none;"></div>
-                <div class = "pages" id = "staff" style = "display: none;"></div>
-                <div class = "pages" id = "Sbooks" style = "display: none;"></div>
-                <div class = "pages" id = "books" style = "display: none;"></div>
-                <div class = "pages" id = "class" style = "display: none;"></div>
-                <div class = "pages" id = "TakeHistory" style = "display: none;"></div>
-                <div class = "pages" id = "duty" style = "display: none;"></div>
+            <div id = "shapbtns" style="display: none;">
+                <button id ="addbtn">Добавить</button>
             </div>
         </div>
+    </div>
+    <div id = "main">
+        <div id = "maindata" style="height: 90%; overflow: auto;">
+            <div class = "data" id = "people" style = "display: none;">Пользователи</div>
+            <div class = "data" id = "access" style = "display: none;">Пользовательский доступ</div>
+        </div>
+        <div id = "pages" style="height: 5%; overflow: auto;">
+            <div class = "pages" id = "people" style = "display: none;"></div>
+            <div class = "pages" id = "access" style = "display: none;"></div>
+        </div>
+    </div>
 </body>
 <link href = "style.css" rel="stylesheet" type="text/css"></style>
+<script src = "indexadmin.js"></script>
 </html>
