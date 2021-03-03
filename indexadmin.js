@@ -9,7 +9,7 @@ let get = (x, i) => {
 }
 
 // init
-const ws = new WebSocket ("wss://192.168.1.2:5353")
+const ws = new WebSocket ("wss://localhost:5353")
 let reqbody = {};
 let assoc = {};
 let table = '';
@@ -47,7 +47,7 @@ document.querySelectorAll('.tables').forEach((x) => {
 })
 
 ws.onopen = () => {
-    get('pupil', 0)
+    get('people', 0)
     get('access', 0)
 }
 
@@ -90,3 +90,16 @@ ws.onmessage = (d) => {
         }
     }
 };
+
+
+// listeners
+// addwindow opener listener
+document.querySelector("#addbtn").addEventListener('click', () => {
+    document.querySelector('#myModal #modaldata').innerHTML = ''
+    for (let i in fields[table]) {
+        if (fields[table][i] != 'id') {
+            document.querySelector('#myModal #modaldata').innerHTML += `<div id="div${fields[table][i]}">${assoc[fields[table][i]]}: <input id = "input${fields[table][i]}" value=""></div>`;
+        }
+    }
+    document.querySelector('#myModal').style.display = "block"
+})
