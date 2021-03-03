@@ -20,12 +20,6 @@ document.querySelectorAll('.tables').forEach((x) => {
         get(x.target.id, 1)
         document.querySelector('#shapbtns').style.display = "inline-block";
         table = x.target.id;
-        if (table == 'duty') {
-            reqbody.action = "dutyget";
-            reqbody.table = table;
-            ws.send(JSON.stringify(reqbody))
-            reqbody = {}
-        }
         document.querySelectorAll('.data').forEach((e) => {
             if (e.id == x.target.id) {
                 e.style.display = 'block'
@@ -47,7 +41,7 @@ document.querySelectorAll('.tables').forEach((x) => {
 })
 
 ws.onopen = () => {
-    get('people', 0)
+    get('pupil', 0)
     get('access', 0)
 }
 
@@ -102,4 +96,42 @@ document.querySelector("#addbtn").addEventListener('click', () => {
         }
     }
     document.querySelector('#myModal').style.display = "block"
+})
+// add and close addwindow
+document.querySelectorAll('#addclose').forEach((x) => {
+    x.addEventListener('click', () => {
+        x.parentNode.parentNode.parentNode.style.display = "none"
+        reqbody.fields = {}
+        document.querySelectorAll('#modaldata div').forEach((x) => {
+            if (x.childNodes[1].value != '') {
+                reqbody.fields[x.id.slice(3)] = x.childNodes[1].value
+            } else {
+                reqbody.fields[x.id.slice(3)] = '-'
+            }
+        })
+        reqbody.action = "put";
+        reqbody.table = table;
+        reqbody.sql = `INSERT into ${table} values ((select count from ${reqbody.table} + 1) `
+        for (let i in reqbody.fields) {
+        reqbody.sql += `'${reqbody.fields[i]}',`
+        }
+        reqbody.sql = reqbody.sql.slice(0,reqbody.sql.length-1) + ');'
+        ws.send(JSON.stringify(reqbody))
+        reqbody = {}
+    })
+})
+// close addwindow listener
+document.querySelectorAll('#close').forEach((x) => {
+    x.addEventListener('click', () => {
+        x.parentNode.parentNode.parentNode.style.display = "none";
+        if (video) {
+            video.srcObject.getTracks().forEach((track) => {
+                track.stop();
+                oldcode = {data: ''}
+                document.getElementById("loadingMessage").hidden = false;
+            })
+        }
+        document.querySelector('#inputpupil').value = ''
+    })
+
 })
