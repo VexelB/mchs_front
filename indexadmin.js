@@ -41,7 +41,7 @@ document.querySelectorAll('.tables').forEach((x) => {
 })
 
 ws.onopen = () => {
-    get('pupil', 0)
+    get('people', 0)
     get('access', 0)
 }
 
